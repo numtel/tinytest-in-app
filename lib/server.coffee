@@ -14,7 +14,7 @@ Meteor.methods
         debug: true
     fut = new Future()
     # Run tests here, on the server
-    runTests options, (error, result) ->
+    _runTests options, (error, result) ->
       throw error if error
       _.each result, (test, key) ->
         result['SERVER ' + key] = test
@@ -22,7 +22,7 @@ Meteor.methods
 
       # Run tests in a PhantomJS client
       options.phantomUrl = options.url
-      resultClient = phantomExec runTests, options
+      resultClient = phantomExec _runTests, options
       throw resultClient.error if resultClient.error
       _.each resultClient.result, (test, key) ->
         result['CLIENT ' + key] = test

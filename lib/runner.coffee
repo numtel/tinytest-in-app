@@ -7,7 +7,7 @@
 # @option {string} phantomUrl - set when running in PhantomJS context,
 #                               url to browse to
 # @param {func} callback(error, result) - data provided when complete
-@runTests = (options, callback) ->
+@_runTests = (options, callback) ->
   options = options || {}
 
   if options.phantomUrl
@@ -16,13 +16,15 @@
     page = webpage.create()
     page.onCallback = (data) ->
       callback undefined, data
+    page.onConsoleLog = (msg) ->
+      console.log msg
     page.open options.phantomUrl, (status) ->
       if status == 'fail'
         callback 'load-failure'
       else
         options.phantomUrl = undefined
         runInPage = (options) ->
-          runTests options, (error, result)->
+          _runTests options, (error, result)->
             window.callPhantom
               error: error
               result: result

@@ -2,12 +2,28 @@
 
 Use Tinytest to test your Meteor app, just like you would a package.
 
+Does not use Velocity so the tests do NOT run in a mirror. You must clean up
+any data you create.
+
+*Expect Travis CI integration instructions soon*
+
 ## Installation
 The `tinytest` package is also required. Install both using this command:
 
 ```bash
 $ meteor add tinytest numtel:tinytest-in-app
 ```
+
+## Quick start
+
+1. Add a test to your application in any file
+    ```javascript
+    Tinytest.add('test title', function(test){
+      test.equal(true, true);
+    });
+    ```
+
+2. Open the Javascript console in your browser, execute `runTinyTest()`
 
 ## Implements
 
@@ -84,15 +100,18 @@ test.exception(exception)
 test.expect_fail()
 ```
 
+## Related packages
+* [numtel:tinytest-fixture-account](http://github.com/numtel/tinytest-fixture-account) - Create a fixture account for tests, remove when done
+
 ## Run Tests
 
 ```bash
 $ git clone https://github.com/numtel/tinytest-in-app.git
-$ cd phantomjs-persistent-server
+$ cd tinytest-in-app
 $ meteor test-packages ./
 ```
 
-Open your browser to `http://localhost:3000/`.
+Open your browser to `http://localhost:3000/`
 
 Open the Javascript console and run the following command:
 

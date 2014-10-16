@@ -7,6 +7,7 @@ Tinytest.add 'nada', (test) ->
   # A test without a test
 
 Tinytest.add 'simple', (test) ->
+  console.log 'hello, world'
   test.equal true, true
 
 Tinytest.add 'simple failure', (test) ->
