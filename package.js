@@ -4,7 +4,7 @@
 Package.describe({
   name: 'numtel:tinytest-in-app',
   summary: 'Use Tinytest to test an application',
-  version: '0.0.2',
+  version: '0.0.3',
   git: "https://github.com/numtel/tinytest-in-app.git",
   debugOnly: true
 });

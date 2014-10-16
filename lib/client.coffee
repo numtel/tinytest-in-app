@@ -32,3 +32,4 @@ reportResults = (results) ->
     console.log 'All tests passed!'
   else
     console.log countFail + ' of ' + countTotal + ' tests failed!'
+  console.log 'TINYTEST COMPLETE'

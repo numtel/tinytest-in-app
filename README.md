@@ -5,7 +5,8 @@ Use Tinytest to test your Meteor app, just like you would a package.
 Does not use Velocity so the tests do NOT run in a mirror. You must clean up
 any data you create.
 
-*Expect Travis CI integration instructions soon*
+*While I would like to include Travis CI integration, something about the 
+`gadicohen:phantomjs` package causes Meteor to hang.*
 
 ## Installation
 The `tinytest` package is also required. Install both using this command:
@@ -99,6 +100,32 @@ test.exception(exception)
 
 test.expect_fail()
 ```
+
+## Alternative interface
+While working towards the Travis CI integration, I have prepared a method of
+running Tinytest from the command line.
+
+Add these two scripts to your application: (Dot files to prevent Meteor from
+including them.)
+
+```bash
+$ wget https://raw.github.com/numtel/tinytest-in-app/master/.startTest.js
+$ wget https://raw.github.com/numtel/tinytest-in-app/master/.phantomRunner.js
+```
+
+To run the tests from your application directory:
+
+```bash
+$ node .startTest.js
+
+# Or specify any parameters to pass through when starting Meteor
+$ node .startTest.js --port 3500
+```
+
+**Notes:**
+* Use `nodejs` command on Debian, Ubuntu systems.
+* Only one instance of Meteor may run at a time in a directory. If your app
+  is running, you should use the in-browser interface instead.
 
 ## Related packages
 * [numtel:tinytest-fixture-account](http://github.com/numtel/tinytest-fixture-account) - Create a fixture account for tests, remove when done
