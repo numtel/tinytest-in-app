@@ -5,9 +5,6 @@ Use Tinytest to test your Meteor app, just like you would a package.
 Does not use Velocity so the tests do NOT run in a mirror. You must clean up
 any data you create.
 
-*While I would like to include Travis CI integration, something about the 
-`gadicohen:phantomjs` package causes Meteor to hang.*
-
 ## Installation
 The `tinytest` package is also required. Install both using this command:
 
@@ -32,8 +29,8 @@ $ meteor add tinytest numtel:tinytest-in-app
 
 Run your tests on the server and in a PhantomJS client then output the results
 to the console. PhantomJS loads the application on the origin of the URL you are
-browsing from. (e.g. If your browser is at `http://localhost:3000/posts/someid`,
-PhantomJS will open `http://localhost:3000` and run `runTinytest({...})`.)
+browsing from. For example, if your browser is at `http://localhost:3000/posts/someid`,
+PhantomJS will open `http://localhost:3000` and execute the tests.
 
 **Options:**
 
@@ -41,7 +38,7 @@ Key    | Description
 -------|----------------------------------------------------------------------
 `pathPrefix` | Specify array of strings to narrow the range of tests to execute. For example, if your test was titled `FirstPart - some test`, pass `['tinytest', 'FirstPart']` to only run the tests that begin with `FirstPart - `.
 
-## Tinytest Documentation
+## Tinytest documentation
 
 Since there is no official documentation for Tinytest, it may be helpful to have
 some here.
@@ -101,9 +98,27 @@ test.exception(exception)
 test.expect_fail()
 ```
 
-## Alternative interface
-While working towards the Travis CI integration, I have prepared a method of
-running Tinytest from the command line.
+## Travis CI integration
+
+Create a `.travis.yml` file in your app repository with the following contents:
+
+```yml
+language: node_js
+node_js:
+- "0.10"
+before_install:
+- "curl -L https://install.meteor.com | /bin/sh"
+- "meteor update"
+- "wget https://raw.github.com/numtel/tinytest-in-app/master/.startTest.js"
+- "wget https://raw.github.com/numtel/tinytest-in-app/master/.phantomRunner.js"
+# Optionally, arguments can be added to Meteor startup
+# ex: node .startTest.js --port 3500
+script: "node .startTest.js"
+```
+
+## Command line interface
+The Travis CI integration can be used to run Tinytest from your local command
+line as well.
 
 Add these two scripts to your application: (Dot files to prevent Meteor from
 including them.)
@@ -130,7 +145,7 @@ $ node .startTest.js --port 3500
 ## Related packages
 * [numtel:tinytest-fixture-account](http://github.com/numtel/tinytest-fixture-account) - Create a fixture account for tests, remove when done
 
-## Run Tests
+## Run tests
 
 ```bash
 $ git clone https://github.com/numtel/tinytest-in-app.git
