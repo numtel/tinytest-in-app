@@ -37,10 +37,6 @@
       "1.0.2"
     ],
     [
-      "gadicohen:phantomjs",
-      "0.0.2"
-    ],
-    [
       "geojson-utils",
       "1.0.1"
     ],
@@ -74,7 +70,7 @@
     ],
     [
       "numtel:phantomjs-persistent-server",
-      "0.0.5"
+      "0.0.8"
     ],
     [
       "ordered-dict",
