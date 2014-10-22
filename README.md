@@ -3,7 +3,8 @@
 Use Tinytest to test your Meteor app, just like you would a package.
 
 Does not use Velocity so the tests do NOT run in a mirror. You must clean up
-any data you create.
+any data you create. If you would like to use Velocity with Tinytest in your
+app, see my [numtel:velocity-tinytest package](https://github.com/numtel/velocity-tinytest).
 
 ## Installation
 The `tinytest` package is also required. Install both using this command:
@@ -144,6 +145,7 @@ $ node .startTest.js --port 3500
 
 ## Related packages
 * [numtel:tinytest-fixture-account](http://github.com/numtel/tinytest-fixture-account) - Create a fixture account for tests, remove when done
+* [numtel:velocity-tinytest](https://github.com/numtel/velocity-tinytest) - Use Tinytest with Velocity in a Meteor app
 
 ## Run tests
 
