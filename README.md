@@ -1,5 +1,7 @@
 # Tinytest In App Meteor Package
 
+**This package has been made obsolete by [a technique that requires no extra packages](https://github.com/numtel/meteor-leaderboard-tinytest).**
+
 Use Tinytest to test your Meteor app, just like you would a package.
 
 Does not use Velocity so the tests do NOT run in a mirror. You must clean up
